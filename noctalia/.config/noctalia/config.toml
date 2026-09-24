@@ -1,11 +1,12 @@
 [bar.default]
-background_opacity = 0.69999998435378075
+background_opacity = 0.0
 capsule = true
-capsule_opacity = 0.4999999888241291
+capsule_fill = "surface"
+capsule_opacity = 0.69999998435378075
 capsule_padding = 4.0
 capsule_thickness = 0.79999998584389687
-center = [ "clock", "spacer_3", "group:g1" ]
-end = [ "tray", "clipboard", "group:g2", "padding-end" ]
+center = [ "clock", "spacer_3", "group:g1", "bar" ]
+end = [ "tray", "clipboard", "group:g2", "padding-end", "group:g4" ]
 font_family = "Geist Mono"
 font_weight = 600
 hover_highlight = false
@@ -13,8 +14,7 @@ margin_ends = 0
 padding = 3
 panel_overlap = 0
 radius = 16
-shadow = false
-start = [ "padding-start", "workspaces", "group:g3" ]
+start = [ "padding-start", "workspaces", "group:g3", "audio_visualizer" ]
 thickness = 30
 widget_spacing = 4
 
@@ -22,10 +22,10 @@ widget_spacing = 4
     accordion = false
     accordion_direction = "end"
     enabled = true
-    fill = "surface_variant"
+    fill = "surface"
     id = "g1"
     members = [ "cpu", "ram" ]
-    opacity = 0.5
+    opacity = 0.69999998807907104
     padding = 8.0
     widget_spacing = 10
 
@@ -34,10 +34,10 @@ widget_spacing = 4
     accordion_direction = "end"
     border = ""
     enabled = true
-    fill = "surface_variant"
+    fill = "surface"
     id = "g2"
-    members = [ "battery", "notifications", "network", "input_volume", "spacer_notif", "output_volume" ]
-    opacity = 0.5
+    members = [ "notifications", "network", "battery" ]
+    opacity = 0.69999998807907104
     padding = 4.0
     widget_spacing = 6
 
@@ -45,12 +45,22 @@ widget_spacing = 4
     accordion = true
     accordion_direction = "end"
     enabled = true
-    fill = "surface_variant"
+    fill = "surface"
     foreground = "on_surface"
     id = "g3"
     members = [ "album_art", "title", "media_padding_end" ]
-    opacity = 0.5
+    opacity = 0.69999998807907104
     padding = 0.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface"
+    id = "g4"
+    members = [ "input_volume", "output_volume", "privacy" ]
+    opacity = 0.69999998807907104
+    padding = 4.0
 
 [battery]
 warning_threshold = 20
@@ -222,7 +232,6 @@ widget_order = [
         format = "{:%H:%M:%S}"
 
 [notification]
-background_opacity = 0.69999998435378075
 layer = "overlay"
 offset_x = 12
 offset_y = 12
@@ -241,25 +250,35 @@ border = true
 [plugin_settings."apex077/eyecare"]
 enable_sound = false
 
+[plugin_settings."noctalia/wallpaper_depth"]
+manager_open_near_click = true
+manager_placement = "floating"
+
+[plugin_settings."noctalia/world_clock"]
+panel_placement = "floating"
+
+[plugin_settings."weinguyen/procmon"]
+panel_position = "auto"
+
 [plugins]
-enabled = [ "apex077/eyecare", "noctalia/world_clock" ]
+enabled = [ "apex077/eyecare", "noctalia/world_clock", "noctalia/wallpaper_depth", "yugaaank/better-clock", "vn1k/cursor" ]
 
 [shell]
 app_icon_color = "secondary"
 avatar_path = "/home/milind/Downloads/52162421.jpeg"
-button_borders = false
-card_borders = false
 font_family = "Noto Sans"
 input_borders = false
 popup_borders = false
 screen_time_enabled = true
 
     [shell.panel]
+    clipboard_position = "auto"
+    control_center_placement = "floating"
     list_item_background = true
-    open_near_click_control_center = true
+    open_near_click_clipboard = true
     session_placement = "floating"
     session_position = "center"
-    transparency_mode = "soft"
+    transparency_mode = "glass"
     wallpaper_position = "bottom_center"
 
     [shell.screen_corners]
@@ -273,20 +292,20 @@ screen_time_enabled = true
     show_shortcuts = false
 
     [shell.shadow]
-    alpha = 0.4999999888241291
+    alpha = 0.99999997764825821
 
 [theme]
 builtin = "Ayu"
 community_palette = "Ayu Green"
 mode = "dark"
 source = "community"
-wallpaper_scheme = "soft"
+wallpaper_scheme = "vibrant"
 
     [theme.templates]
     enable_builtin_templates = false
 
 [wallpaper]
-directory_dark = "/home/milind/Pictures/Wallpapers"
+directory_dark = "/home/milind/Pictures/Wallpapers/wallpapers"
 edge_smoothness = 0.29999999329447746
 transition = [ "disc", "wipe", "zoom" ]
 transition_duration = 1000
@@ -297,16 +316,16 @@ transition_on_startup = true
     interval_seconds = 300
 
     [wallpaper.default]
-    path = "/home/milind/Pictures/Wallpapers/wallpapers/wallhaven-6o3877 (Edited).jpg"
-
-    [wallpaper.last]
-    path = "/home/milind/Pictures/Wallpapers/wallpapers/wallhaven-6o3877 (Edited).jpg"
-
-    [wallpaper.monitors.HDMI-A-1]
     path = "/home/milind/Pictures/Wallpapers/wallpapers/wallhaven-qz8pwl.jpg"
 
+    [wallpaper.last]
+    path = "/home/milind/Pictures/Wallpapers/wallpapers/wallhaven-qz8pwl.jpg"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/milind/Pictures/Wallpapers/wallpapers/wallhaven-lyw6zr.jpg"
+
     [wallpaper.monitors.eDP-1]
-    path = "/home/milind/Pictures/Wallpapers/wallpapers/wallhaven-6o3877 (Edited).jpg"
+    path = "/home/milind/Pictures/Wallpapers/wallpapers/wallhaven-qz8pwl.jpg"
 
 [widget.album_art]
 album_art_only = true
@@ -314,8 +333,19 @@ art_size = 22
 hide_when_no_media = true
 type = "media"
 
-[widget.clock]
+[widget.audio_visualizer]
+bands = 60
 capsule = true
+capsule_opacity = 0.0
+capsule_radius = 0
+color_2 = "tertiary"
+mirrored = false
+width = 60
+
+[widget.bar]
+type = "noctalia/wallpaper_depth:bar"
+
+[widget.clock]
 capsule_padding = 8
 format = "{:%H:%M %a %d}"
 tooltip_format = "{:%d %B %Y}"
@@ -325,6 +355,7 @@ tooltip_format = "{:%d %B %Y}"
 
 [widget.cpu]
 color = "primary"
+display = "text"
 glyph = "cpu-2"
 visualization = "none"
 
@@ -334,6 +365,9 @@ show_label = false
 [widget.launcher]
 enabled = false
 glyph = "brand-among-us"
+
+[widget.lock_keys]
+enabled = false
 
 [widget.media]
 capsule_opacity = 0.5
@@ -361,8 +395,15 @@ enabled = false
 length = 3
 type = "spacer"
 
+[widget.privacy]
+hide_inactive = true
+
+    [widget.privacy.actions]
+    left = "panel-open control-center audio"
+
 [widget.ram]
 color = "primary"
+display = "text"
 label_min_width = 24
 stat = "ram_pct"
 visualization = "none"
@@ -377,10 +418,6 @@ enabled = false
 [widget.spacer_3]
 anchor = true
 length = 6
-type = "spacer"
-
-[widget.spacer_notif]
-length = 4
 type = "spacer"
 
 [widget.sysmon]

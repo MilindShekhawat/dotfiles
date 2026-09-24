@@ -370,13 +370,16 @@ layer-rule {
     }
 }
 
-// Force-disable the blur noctalia requests for panels over ext-background-effect.
-// The $ anchor keeps noctalia-panel-click-shield, a fullscreen invisible input
-// catcher, out of the match -- blurring that would blur the whole screen.
+// Panels blur the content behind them. Safe now that the bar background is
+// fully transparent, so there is no blurred bar for a panel to seam against.
+// xray stays off for the same flicker reason as toasts. The $ anchor keeps
+// noctalia-panel-click-shield, a fullscreen invisible input catcher, out of the
+// match -- blurring that would blur the whole screen.
 layer-rule {
     match namespace="^noctalia-(panel|attached-panel)$"
     background-effect {
-        blur false
+        blur true
+        xray false
     }
 }
 
